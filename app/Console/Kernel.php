@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //->cron('*/10 * * * * *') Run every 10 Minutes
         $schedule->command('command:moviesSeeder')
-            ->everyTenMinutes();
+            ->cron('*/'.config("seeder.interval_time").' * * * * *');
     }
 
     /**
