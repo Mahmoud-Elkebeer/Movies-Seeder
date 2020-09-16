@@ -15,6 +15,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('users/import', ['uses' => 'UserController@import', 'as' => 'users.import']);
-Route::post('users/import', ['uses' => 'UserController@storeImport', 'as' => 'users.store.import']);
