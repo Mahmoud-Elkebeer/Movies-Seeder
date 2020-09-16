@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\MoviesSeeder',
     ];
 
     /**
@@ -24,11 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        while (true) {
-            $schedule->command('Movies:Seeder');
-            sleep(config('seeder.interval_time')*60);
-        }
-
+        $schedule->command('command:moviesSeeder')
+            ->everyTenMinutes();
     }
 
     /**

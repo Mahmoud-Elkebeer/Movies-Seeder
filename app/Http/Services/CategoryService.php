@@ -16,7 +16,6 @@ class CategoryService
     public function fillCategoryFromTMDB($TmbCategory)
     {
         $category = new Category();
-
         $category->category_id = $TmbCategory["id"];
         $category->name = $TmbCategory["name"];
         $category->save();
@@ -30,7 +29,7 @@ class CategoryService
         foreach ($genres["genres"] as $genre) {
             $category = Category::query()->where('category_id', '=', $genre["id"])->first();
             if (!$category) {
-                $this->fillCategoryFromTMDB($genres);
+                $this->fillCategoryFromTMDB($genre);
             }
         }
     }
